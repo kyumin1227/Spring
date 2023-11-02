@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service    // Spring 컨테이너에 서비스로 등록
+//@Service    // Spring 컨테이너에 서비스로 등록
 public class MemberService {
 
     private final MemberRepository memberRepository;
