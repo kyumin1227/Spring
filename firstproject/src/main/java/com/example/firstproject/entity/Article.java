@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -14,6 +15,7 @@ import lombok.ToString;
 @ToString               // 롬복을 이용하여 toString 대체
 public class Article {
 
+    @Getter
     @Id     // 엔티티의 대표값 지정
     @GeneratedValue     // 자동 생성 기능(숫자가 자동으로 매겨짐)
     private Long id;
@@ -22,7 +24,7 @@ public class Article {
     @Column
     private String content;
 
-//    public Article() {
+    //    public Article() {
 //
 //    }
 
