@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j      // 로깅 기능을 위한 어노테이션 추가
@@ -43,12 +44,24 @@ public class ArticleController {
     @GetMapping("/articles/{id}")
     public String show(@PathVariable Long id, Model model) {     // 매개변수로 id 받아 오기
         log.info("id: " + id);
-//        1. id를 조회해 데이터 가져오기
+//        1. id를 조회해 데이터 가져오기 (두 가지 방법)
 //        Optional<Article> articleEntity = articleRepository.findById(id);   // findById의 반환값은 Optional
         Article articleEntity = articleRepository.findById(id).orElse(null);    // 값이 없으면 null 반환
 //        2. 모델에 데이터 등록하기
         model.addAttribute("article", articleEntity);
 //        3. 뷰 페이지 반환하기
         return "articles/show";
+    }
+
+    @GetMapping("/articles")
+    public String index(Model model) {
+//        1. 모든 데이터 가져오기 (세 가지 방법)
+//        List<Article> articlesEntityList = (List<Article>) articleRepository.findAll();     // findAll은 Iterable을 반환하기 때문에 List<Article>로 캐스팅
+//        Iterable<Article> articlesEntityList = articleRepository.findAll();       // findAll을 Iterable로 받는 방법
+        List<Article> articlesEntityList = articleRepository.findAll();     // articleRepository에서 findAll 함수의 반환값을 ArrayList로 수정
+//        2. 모델에 데이터 등록하기
+        model.addAttribute("articleList", articlesEntityList);
+//        3. 뷰 페이지 설정하기
+        return "articles/index";
     }
 }
