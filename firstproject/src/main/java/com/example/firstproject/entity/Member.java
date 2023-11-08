@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -14,6 +15,7 @@ import lombok.ToString;
 @ToString
 public class Member {
 
+    @Getter
     @Id
     @GeneratedValue
     private Long id;
@@ -22,7 +24,7 @@ public class Member {
     @Column
     private String password;
 
-//    public Member(Long id, String email, String password) {
+    //    public Member(Long id, String email, String password) {
 //        this.id = id;
 //        this.email = email;
 //        this.password = password;
