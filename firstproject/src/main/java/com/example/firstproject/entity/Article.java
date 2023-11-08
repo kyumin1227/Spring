@@ -5,10 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity     // 엔티티 선언
 @AllArgsConstructor     // 롬복을 이용하여 생성자 대체
+@NoArgsConstructor      // 롬복을 이용하여 기본 생성자 대체
 @ToString               // 롬복을 이용하여 toString 대체
 public class Article {
 
@@ -19,6 +21,10 @@ public class Article {
     private String title;
     @Column
     private String content;
+
+//    public Article() {
+//
+//    }
 
 //    public Article(Long id, String title, String content) {
 //        this.id = id;
