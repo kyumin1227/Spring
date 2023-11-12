@@ -1,9 +1,6 @@
 package com.example.firstproject.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +14,7 @@ public class Article {
 
     @Getter
     @Id     // 엔티티의 대표값 지정
-    @GeneratedValue     // 자동 생성 기능(숫자가 자동으로 매겨짐)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // DB가 id 자동 생성
     private Long id;
     @Column
     private String title;
