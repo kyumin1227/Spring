@@ -16,10 +16,21 @@ public class Article {
     @Id     // 엔티티의 대표값 지정
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // DB가 id 자동 생성
     private Long id;
+    @Getter     // api/article에서 값을 못 받아와서 임시로 추가
     @Column
     private String title;
+    @Getter     // api/article에서 값을 못 받아와서 임시로 추가
     @Column
     private String content;
+
+    public void patch(Article article) {
+        if(article.title != null) {
+            this.title = article.title;
+        }
+        if(article.content != null) {
+            this.content = article.content;
+        }
+    }
 
     //    public Article() {
 //
