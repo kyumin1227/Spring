@@ -28,7 +28,7 @@ public class Coffee {
         if(coffee.name != null) {
             this.name = coffee.name;
         }
-        if(coffee.price != null) {
+        if(coffee.price != 0) {
             this.price = coffee.price;
         }
     }
