@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,6 +50,39 @@ class CommentRepositoryTest {
 //            4. 비교 및 검증
             assertEquals(expected.toString(), comments.toString(), "1번 글은 댓글의 없음");
         }
+
+//        Case 3: 9번 게시글의 모든 댓글 조회
+        {
+            Long id = 9L;
+
+            List<Comment> comments = commentRepository.findByArticleId(id);
+
+            List<Comment> expected = Arrays.asList();
+
+            assertEquals(expected, comments);
+        }
+
+//        Case 4: 999번 게시글의 모든 댓글 조회
+        {
+            Long id = 999L;
+
+            List<Comment> comments = commentRepository.findByArticleId(id);
+
+            List<Comment> expected = Arrays.asList();
+
+            assertEquals(expected, comments);
+        }
+
+//        Case 5: -1번 게시글의 모든 댓글 조회
+        {
+            Long id = -1L;
+
+            List<Comment> comments = commentRepository.findByArticleId(id);
+
+            List<Comment> expected = Arrays.asList();
+
+            assertEquals(expected, comments);
+        }
     }
 
     @Test
@@ -67,6 +101,42 @@ class CommentRepositoryTest {
             List<Comment> expected = Arrays.asList(a, b, c);
 //            4. 비교 및 검증
             assertEquals(expected.toString(), comments.toString(), "Park의 모든 댓글 출력!");
+        }
+
+//        Case 2: "Kim"의 모든 댓글 조회
+        {
+            String nickname = "Kim";
+
+            List<Comment> comments = commentRepository.findByNickname(nickname);
+
+            Comment a = new Comment(2L, new Article(4L, "당신의 인생 영화는?", "댓글 고"), "Kim", "아이 엠 샘");
+            Comment b = new Comment(5L, new Article(5L, "당신의 소울 푸드는?", "댓글 고고"), "Kim", "샤브샤브");
+            Comment c = new Comment(8L, new Article(6L, "당신의 취미는?", "댓글 고고고"), "Kim", "유튜브 시청");
+            List<Comment> expected = Arrays.asList(a, b, c);
+
+            assertEquals(expected.toString(), comments.toString());
+        }
+
+//        Case 3: null의 모든 댓글 조회
+        {
+            String nickname = null;
+
+            List<Comment> comments = commentRepository.findByNickname(nickname);
+
+            List<Comment> expected = Arrays.asList();
+
+            assertEquals(expected, comments);
+        }
+
+//        Case 4: ""의 모든 댓글 조회
+        {
+            String nickname = "";
+
+            List<Comment> comments = commentRepository.findByNickname(nickname);
+
+            List<Comment> expected = Arrays.asList();
+
+            assertEquals(expected, comments);
         }
     }
 }
