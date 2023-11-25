@@ -16,23 +16,29 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+//    @Bean memberService -> new MemoryMemberRepository()
+//    @Bean orderService -> new MemoryMemberRepository()
+
     @Bean
     public MemberService memberService() {
+        System.out.println("AppConfig.memberService");
         return new MemberServiceImpl(getMemberRepository());
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(getMemberRepository(), getDiscountPolicy());
     }
 
     @Bean
-    private static MemberRepository getMemberRepository() {
+    public MemberRepository getMemberRepository() {
+        System.out.println("AppConfig.getMemberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
-    private static DiscountPolicy getDiscountPolicy() {
+    public DiscountPolicy getDiscountPolicy() {
         return new RateDiscountPolicy();
     }
 
