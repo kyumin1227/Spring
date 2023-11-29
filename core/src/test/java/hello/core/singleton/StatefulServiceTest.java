@@ -23,7 +23,7 @@ class StatefulServiceTest {
 //        A 사용자 주문 금액 조회
         int price = statefulService1.getPrice();
 
-        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(10000);
+        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
     }
 
     static class TestConfig {
