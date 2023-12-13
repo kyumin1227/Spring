@@ -22,4 +22,5 @@ public class Member {
 
     @OneToMany(mappedBy = "member")  // 연관관계의 주인이 아니기 때문에 mappedBy 추가
     private List<Order> orders = new ArrayList<>();
+
 }
