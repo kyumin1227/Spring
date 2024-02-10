@@ -10,3 +10,5 @@ spring:
       ddl-auto: none  # 시작 시 데이터베이스에 테이블을 생성 (create 일 경우 이미 값이 있어도 초기화 하여 업데이트)
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+spring.jwt.secret: fwefwaefiasdjiopfjweaiogjuiernhbuirenfuihraeuifgjsdzpofviweoaj
